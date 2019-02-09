@@ -20,19 +20,19 @@
   </head>
   <body>
     <div class="shell">
+      <div class="header">
+        <img src="../assets/pennywall-brown.png" class="pennywall" />
+      </div>
       <div class="form">
         <h2 style="width:100%;text-align:center">
           {{params.title}}
         </h2>
         <div class="message">
-          {{merchant.name}}
-          is supported with your donations.
-          <br />
-          Please consider adding a tip.
+          {{params.message}}
         </div>
         <div style="text-align:center;width:100%">
           <i class="material-icons">
-            favorite
+            sentiment_very_satisfied
           </i>
         </div>
         <div
@@ -40,29 +40,38 @@
         >
           <div
             class="quid-slider"
-            quid-amount="0.12"
-            quid-min-amount="0.00"
-            quid-max-amount="2.00"
-            quid-currency="CAD"
-            quid-product-id="P0001"
+            quid-amount="{{product.price}}"
+            quid-min-amount="{{button.min}}"
+            quid-max-amount="{{button.max}}"
+            quid-currency="{{product.currency}}"
+            quid-product-id="{{product.id}}"
             quid-palette="maroon"
-            quid-product-url="/articles/green_carrots_and_beans"
-            quid-product-name={{"Payment to News Post York"}}
-            quid-product-description="Donation example on PennyWall"
-            quid-text="DONATE"
-            quid-text-paid="THANKS FOR DONATING!"
+            quid-product-url="{{product.url}}"
+            quid-product-name="{{product.name}}"
+            quid-product-description="{{product.description}}"
+            quid-text="{{button.text}}"
+            quid-text-paid="{{button.paidText}}"
           ></div>
         </div>
+        {{#if params.allowSkip}}
+          <div class="skip">
+            <a href={{destination.url}}>
+              {{params.skipText}}
+            </a>
+          </div>
+        {{/if}}
+      </div>
+      <div class="footer">
+        Get your own
+        <i class="material-icons tiny">
+          favorite
+        </i>
+        at
+        <a target="_blank" href="https://pennywall.io">
+          pennywall.io
+        </a>
       </div>
     </div>
-    <script>
-      quid.autoInit({
-        apiKey: 'kt-TWFY3006LNY3OHS2LK58L153EIGCQO1F',
-        onPaymentSuccess: function(response) {
-          console.log("got", response);
-          // window.location.replace("http://www.w3schools.com");
-        }
-      });
-    </script>
+    <script src="index.js"></script>
   </body>
 </html>

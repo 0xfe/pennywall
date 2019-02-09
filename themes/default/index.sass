@@ -1,11 +1,11 @@
 $font-stack: "Barlow"
 
-$background: #1a1a1d
+$background: #4e0511
 $color-first: #c3073f
 $color-second: #950740
 $color-third: #6f2232
 
-$color-bright: white
+$color-bright: black
 $color-dull: #4e4e50
 
 body
@@ -16,17 +16,20 @@ body
     color: $color-second
 
 .shell
-    padding: 0
+    padding: 10
     display: flex
-    justify-content: center
+    flex-direction: column
+    justify-content: space-between
     align-items: center
-    height: 80%
+    height: 90%
     width: 100%
 
 .form
-    padding: 20
+    border-radius: 5px
+    padding: 14
     max-width: 300px
-    background: #222
+    background: #fff7f7
+    border: 5px solid #963838
 
 .message
     padding: 10
@@ -38,6 +41,28 @@ h2
     margin: 0
     color: $color-first
 
+div.skip
+    text-align: center
+    font-size: 12px
+    padding-top: 8px
+
 i.material-icons
     font-size: 80px
     padding: 10px
+
+img.pennywall
+    width: 300px
+    border-radius: 6px
+
+a
+    color: $color-first
+    text-decoration: none
+
+.footer
+    color: white
+
+i.material-icons.tiny
+    font-size: 16px
+    padding: 3px
+    color: $color-second
+    margin-bottom: 6

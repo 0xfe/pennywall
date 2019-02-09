@@ -4,8 +4,9 @@
   "description": "A self-hosted donation / tip wall for sharing content",
   "main": "index.js",
   "scripts": {
+    "build": "./index.js build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon -e js,hbs,sass,json -w themes/ -w index.js -x './index.js build'"
+    "watch": "nodemon -e js,hbs,sass,json -w themes/ -w index.js -w pennywall.json -x npm run build"
   },
   "repository": {
     "type": "git",

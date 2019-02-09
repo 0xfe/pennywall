@@ -1,5 +1,5 @@
 {
-  "apiKey": "XXX",
+  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
   "theme": "default",
   "merchant": {
     "name": "Kev's Vegan Blog"
@@ -8,7 +8,9 @@
     "id": "10001",
     "name": "Online donation",
     "description": "Donation to Kev's Vegan Blog",
-    "url": "https://kevsveganblog.com/donate"
+    "url": "https://kevsveganblog.com/donate",
+    "price": 1.00,
+    "currency": "CAD"
   },
   "destination": {
     "url": "https://kevsveganblog.com",
@@ -17,8 +19,6 @@
   },
   "button": {
     "slider": true,
-    "price": 1.00,
-    "currency": "USD",
     "min": 0,
     "max": 2,
     "text": "DONATE",
@@ -26,6 +26,8 @@
   },
   "params": {
     "title": "Donate to Kev's Vegan Blog",
-    "message": "This site is supported with your donations. Please consider adding a tip."
+    "message": "This site is supported with your donations. Please consider adding a tip.",
+    "allowSkip": true,
+    "skipText": "No thanks! Take me Kev's Vegan Blog."
   }
 }

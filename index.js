@@ -21,10 +21,14 @@ function build(params) {
   const themePath = path.join('themes', themeName);
   const index = path.join(themePath, 'index.hbs');
   const sassFile = path.join(themePath, 'index.sass');
+  const jsFile = path.join(themePath, 'index.js');
 
   const theme = fs.readFileSync(index).toString();
   const template = handlebars.compile(theme);
   const html = template(params);
+
+  const jsTemplate = handlebars.compile(fs.readFileSync(jsFile).toString());
+  const js = jsTemplate(params);
 
   const outPath = 'build';
   log('generating assets into', outPath);
@@ -36,7 +40,9 @@ function build(params) {
     file: sassFile,
     outFile: path.join(outPath, 'index.css'),
   });
+
   fs.writeFileSync(path.join(outPath, 'index.html'), html);
+  fs.writeFileSync(path.join(outPath, 'index.js'), js);
   fs.writeFileSync(path.join(outPath, 'index.css'), css.css);
 }
 
