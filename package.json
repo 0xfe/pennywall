@@ -1,0 +1,34 @@
+{
+  "name": "pennywall",
+  "version": "1.0.0",
+  "description": "A self-hosted donation / tip wall for sharing content",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xfe/pennywall.git"
+  },
+  "keywords": [
+    "payments",
+    "donations",
+    "social"
+  ],
+  "author": "Mohit Cheppudira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0xfe/pennywall/issues"
+  },
+  "homepage": "https://github.com/0xfe/pennywall#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "handlebars": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
