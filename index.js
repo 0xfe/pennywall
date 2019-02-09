@@ -4,7 +4,7 @@ const program = require('commander');
 const handlebars = require('handlebars');
 const fs = require('fs');
 const path = require('path');
-
+const sass = require('node-sass');
 
 function log(...args) {
   // eslint-disable-next-line
@@ -14,7 +14,7 @@ function log(...args) {
 function build(themeName, params) {
   const themePath = path.join('themes', themeName);
   const index = path.join(themePath, 'index.hbs');
-  const css = path.join(themePath, 'index.css');
+  const sassFile = path.join(themePath, 'index.sass');
 
   const theme = fs.readFileSync(index).toString();
   const template = handlebars.compile(theme);
@@ -25,8 +25,13 @@ function build(themeName, params) {
   if (!fs.existsSync(outPath)) {
     fs.mkdirSync(outPath, { recursive: true });
   }
+
+  const css = sass.renderSync({
+    file: sassFile,
+    outFile: path.join(outPath, 'index.css'),
+  });
   fs.writeFileSync(path.join(outPath, 'index.html'), html);
-  fs.copyFileSync(css, path.join(outPath, 'index.css'));
+  fs.writeFileSync(path.join(outPath, 'index.css'), css.css);
 }
 
 program

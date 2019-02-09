@@ -23,7 +23,8 @@
   "homepage": "https://github.com/0xfe/pennywall#readme",
   "dependencies": {
     "commander": "^2.19.0",
-    "handlebars": "^4.1.0"
+    "handlebars": "^4.1.0",
+    "node-sass": "^4.11.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
