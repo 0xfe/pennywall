@@ -11,7 +11,13 @@ function log(...args) {
   console.log(...args);
 }
 
-function build(themeName, params) {
+function readConfig(file) {
+  const data = fs.readFileSync(file);
+  return JSON.parse(data.toString());
+}
+
+function build(params) {
+  const themeName = params.theme;
   const themePath = path.join('themes', themeName);
   const index = path.join(themePath, 'index.hbs');
   const sassFile = path.join(themePath, 'index.sass');
@@ -36,14 +42,20 @@ function build(themeName, params) {
 
 program
   .version('0.0.1')
-  .command('build <theme> [optional]')
+  .command('build [optional]')
   .description('build pennywall')
-  .option('-k, --apiKey', 'QUID API Key')
+  .option('--apiKey [apiKey]', 'QUID API Key')
   .option('--title [title]', 'Page title')
-  .action((theme, _, options) => {
-    build(theme, {
-      title: (options && options.title) || 'No title',
-    });
+  .action((_, options) => {
+    const config = readConfig('pennywall.json');
+
+    if (options) {
+      if (options.apiKey) {
+        config.apiKey = options.apiKey;
+      }
+    }
+
+    build(config);
   });
 
 program.parse(process.argv); // notice that we have to parse in a new statement.

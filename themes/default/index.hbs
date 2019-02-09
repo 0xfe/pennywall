@@ -15,17 +15,54 @@
      />
 
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://js.quid.works/v1/assets/quid.css" />
+    <script src="https://js.quid.works/v1/client.js"></script>
   </head>
   <body>
-    <div class="entry">
-      <h1>
-        {{title}}
-      </h1>
-      <div>
-        <i class="material-icons">
-          face
-        </i>
+    <div class="shell">
+      <div class="form">
+        <h2 style="width:100%;text-align:center">
+          {{params.title}}
+        </h2>
+        <div class="message">
+          {{merchant.name}}
+          is supported with your donations.
+          <br />
+          Please consider adding a tip.
+        </div>
+        <div style="text-align:center;width:100%">
+          <i class="material-icons">
+            favorite
+          </i>
+        </div>
+        <div
+          style="width:100%;display:flex;justify-items:center;align-items:center"
+        >
+          <div
+            class="quid-slider"
+            quid-amount="0.12"
+            quid-min-amount="0.00"
+            quid-max-amount="2.00"
+            quid-currency="CAD"
+            quid-product-id="P0001"
+            quid-palette="maroon"
+            quid-product-url="/articles/green_carrots_and_beans"
+            quid-product-name={{"Payment to News Post York"}}
+            quid-product-description="Donation example on PennyWall"
+            quid-text="DONATE"
+            quid-text-paid="THANKS FOR DONATING!"
+          ></div>
+        </div>
       </div>
     </div>
+    <script>
+      quid.autoInit({
+        apiKey: 'kt-TWFY3006LNY3OHS2LK58L153EIGCQO1F',
+        onPaymentSuccess: function(response) {
+          console.log("got", response);
+          // window.location.replace("http://www.w3schools.com");
+        }
+      });
+    </script>
   </body>
 </html>

@@ -4,7 +4,8 @@
   "description": "A self-hosted donation / tip wall for sharing content",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon -e js,hbs,sass,json -w themes/ -w index.js -x './index.js build'"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   "dependencies": {
     "commander": "^2.19.0",
     "handlebars": "^4.1.0",
-    "node-sass": "^4.11.0"
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.10"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
