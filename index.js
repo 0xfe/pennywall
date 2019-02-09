@@ -1,14 +1,22 @@
 #!/usr/bin/env node
 
+const program = require('commander');
+const handlebars = require('handlebars');
+const fs = require('fs');
+
+
 function log(...args) {
   // eslint-disable-next-line
   console.log(...args);
 }
 
-const program = require('commander');
-
-function build(theme) {
-  log('build', theme);
+function build(themeName) {
+  const theme = fs.readFileSync(`${themeName}.hbs`).toString();
+  const template = handlebars.compile(theme);
+  const html = template({
+    title: 'hello',
+  });
+  log(html);
 }
 
 program
