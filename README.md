@@ -10,7 +10,7 @@ Install pennywall:
 npm i pennywall
 ```
 
-Edit your configuration file:
+Edit your configuration file. You need a [QUID](https://quid.works) API key to accept payments.
 
 ```
 vi pennywall.json
