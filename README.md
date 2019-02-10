@@ -109,6 +109,14 @@ npx serve
 npm run watch
 ```
 
+### Publishing a new release
+
+```
+# bump version in package.json
+npm login
+npm publish
+```
+
 ## MIT License
 
 Copyright (c) Mohit Muthanna Cheppudira 2019 <br/>
