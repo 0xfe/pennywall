@@ -19,8 +19,17 @@ function readConfig(file) {
 function build(params) {
   const themeName = params.theme.name;
   const themePath = path.join('themes', themeName);
+
+  // Load index page
   const index = path.join(themePath, 'index.hbs');
-  const sassFile = path.join(themePath, 'index.scss');
+
+  // Load SASS
+  let sassFile = path.join(themePath, 'index.scss');
+  if (params.theme.palette) {
+    sassFile = path.join(themePath, `index-${params.theme.palette}.scss`);
+  }
+
+  // Load index JS
   const jsFile = path.join(themePath, 'index.js');
 
   const theme = fs.readFileSync(index).toString();

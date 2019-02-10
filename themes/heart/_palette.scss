@@ -1,0 +1,15 @@
+$palette-maroon: (
+  bg: #4e0511,
+  first: #c3073f,
+  second: #950740,
+  third: #6f2232,
+  bright: white,
+  dull: #4e4e50,
+  form-text: black,
+  form-bg: whitesmoke,
+  form-border: 5px solid #963838
+);
+
+@function palette($entity) {
+  @return map-get($palette, $entity);
+}

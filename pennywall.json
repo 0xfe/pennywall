@@ -8,7 +8,7 @@
     "name": "Online donation",
     "description": "Donation to Kev's Vegan Blog",
     "url": "https://kevsveganblog.com/donate",
-    "price": 1.00,
+    "price": 1.0,
     "currency": "CAD"
   },
   "destination": {
@@ -25,6 +25,7 @@
   },
   "theme": {
     "name": "heart",
+    "palette": "maroon",
     "title": "Donate to Kev's Vegan Blog",
     "message": "This site is supported with your donations. Please consider adding a tip.",
     "allowSkip": true,
