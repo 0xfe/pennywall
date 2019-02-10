@@ -116,7 +116,6 @@ program
       }
     }
 
-    log(cmd);
     const outPath = cmd.parent.outpath || 'build/';
     const themePath = getThemePath(config.theme.name);
     const assetPath = cmd.parent.shared ? '../assets' : 'assets';
