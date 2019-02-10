@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/0xfe/pennywall#readme",
   "dependencies": {
+    "chalk": "^2.4.2",
     "commander": "^2.19.0",
     "fs-extra": "^7.0.1",
     "handlebars": "^4.1.0",
@@ -35,5 +36,8 @@
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0"
+  },
+  "bin": {
+    "pennywall": "./pennywall.js"
   }
 }

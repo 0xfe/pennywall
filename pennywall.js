@@ -5,14 +5,29 @@ const handlebars = require('handlebars');
 const fs = require('fs-extra');
 const path = require('path');
 const sass = require('node-sass');
+const chalk = require('chalk');
 
 function log(...args) {
   // eslint-disable-next-line
   console.log(...args);
 }
 
+function fatal(...args) {
+  // eslint-disable-next-line
+  console.error(chalk.red("ERROR"), ...args);
+  process.exit(-1);
+}
+
+function mustExist(file) {
+  if (!fs.existsSync(file)) {
+    fatal(`could not read file: ${file}`);
+  }
+
+  return file;
+}
+
 function readConfig(file) {
-  const data = fs.readFileSync(file);
+  const data = fs.readFileSync(mustExist(file));
   return JSON.parse(data.toString());
 }
 
@@ -20,33 +35,48 @@ function build(params) {
   const themeName = params.theme.name;
   const themePath = path.join('themes', themeName);
 
-  // Load index page
-  const index = path.join(themePath, 'index.hbs');
-
-  // Load SASS
-  let sassFile = path.join(themePath, 'index.scss');
-  if (params.theme.palette) {
-    sassFile = path.join(themePath, `index-${params.theme.palette}.scss`);
+  if (!fs.existsSync(themePath)) {
+    fatal(`could not find theme "${themeName}" in ${themePath}`);
   }
 
+  // Load index page
+  const indexFile = mustExist(path.join(themePath, 'index.hbs'));
+
+  // Load SASS
+  const sassFile = mustExist(
+    params.theme.palette
+      ? path.join(themePath, `index-${params.theme.palette}.scss`)
+      : path.join(themePath, 'index.scss'),
+  );
+
   // Load index JS
-  const jsFile = path.join(themePath, 'index.js');
+  const jsFile = mustExist(path.join(themePath, 'index.js'));
 
-  const theme = fs.readFileSync(index).toString();
-  const template = handlebars.compile(theme);
-  const html = template(params);
-
-  const jsTemplate = handlebars.compile(fs.readFileSync(jsFile).toString());
-  const js = jsTemplate(params);
-
-  const outPath = 'build';
-  log('generating assets into', outPath);
+  // Create output path
+  const outPath = 'build/';
+  log(chalk.green('building pennywall into'), outPath);
   fs.ensureDirSync(outPath);
 
-  const css = sass.renderSync({
-    file: sassFile,
-    outFile: path.join(outPath, 'index.css'),
-  });
+  let html;
+  let js;
+  let css;
+
+  try {
+    const jsTemplate = handlebars.compile(fs.readFileSync(jsFile).toString());
+    js = jsTemplate(params);
+
+    const htmlTemplate = handlebars.compile(
+      fs.readFileSync(indexFile).toString(),
+    );
+    html = htmlTemplate(params);
+
+    css = sass.renderSync({
+      file: sassFile,
+      outFile: path.join(outPath, 'index.css'),
+    });
+  } catch (e) {
+    fatal(e);
+  }
 
   fs.writeFileSync(path.join(outPath, 'index.html'), html);
   fs.writeFileSync(path.join(outPath, 'index.js'), js);
@@ -56,20 +86,25 @@ function build(params) {
 
 program
   .version('0.0.1')
-  .command('build [optional]')
-  .description('build pennywall')
-  .option('--apiKey [apiKey]', 'QUID API Key')
-  .option('--title [title]', 'Page title')
-  .action((_, options) => {
-    const config = readConfig('pennywall.json');
+  .option('-c, --config [config]', 'enable some foo')
+  .command('build')
+  .option('-k, --apiKey [override QUID API key]', 'enable some foo')
+  .description('build pennywall using config file')
+  .action((cmd) => {
+    const configFile = cmd.parent.config || 'pennywall.json';
+    const config = readConfig(configFile);
 
-    if (options) {
-      if (options.apiKey) {
-        config.apiKey = options.apiKey;
+    if (cmd) {
+      if (cmd.apiKey) {
+        config.apiKey = cmd.apiKey;
       }
     }
 
     build(config);
   });
 
-program.parse(process.argv); // notice that we have to parse in a new statement.
+program.parse(process.argv);
+
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+}
