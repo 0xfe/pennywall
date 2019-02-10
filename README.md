@@ -1,6 +1,6 @@
-# pennywall
-
-A self-hosted donation / tip wall for sharing content
+<p align="center">
+  <img src="https://i.imgur.com/E9LyKea.png" />
+</p>
 
 ## Dev
 
