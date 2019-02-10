@@ -31,8 +31,8 @@ function readConfig(file) {
   return JSON.parse(data.toString());
 }
 
-function getThemePath(themeName) {
-  const themePath = path.join('themes', themeName);
+function getThemePath(themeName, basePath) {
+  const themePath = path.join(basePath || 'themes', themeName);
 
   if (!fs.existsSync(themePath)) {
     fatal(`could not find theme "${themeName}" in ${themePath}`);
@@ -102,6 +102,7 @@ program
   .version('0.0.1')
   .option('-c, --config [config]', 'set configuration file')
   .option('-o, --outpath [outpath]', 'generate files to path')
+  .option('--themepath [themepath]', 'path to themes')
   .option('--shared', 'shared asset path (for hosted environments)')
   .command('build')
   .option('-k, --apiKey [quidApiKey]', 'override QUID API key')
@@ -117,12 +118,12 @@ program
     }
 
     const outPath = cmd.parent.outpath || 'build/';
-    const themePath = getThemePath(config.theme.name);
+    const themePath = getThemePath(config.theme.name, cmd.parent.themepath);
     const assetPath = cmd.parent.shared ? '../assets' : 'assets';
 
     const files = build(themePath, assetPath, config);
     writeFiles(outPath, files.html, files.js, files.css);
-    copyAssets(outPath, getThemePath(config.theme.name));
+    copyAssets(outPath, themePath);
   });
 
 program.parse(process.argv);
