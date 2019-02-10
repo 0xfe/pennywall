@@ -3,11 +3,18 @@
 VERSION=v1
 BUCKET=gs://give.pennywall.io
 URL=${BUCKET}
+LINK=$1
+
+if [ "$LINK" == "" ]; then
+  echo Usage: $0 link
+  echo "  path: https://give.pennywall.io/LINK"
+  exit
+fi
 
 npm run build
 
 echo Uploading website...
-gsutil -m cp -a public-read -z html,css,js build/* ${URL}/kevsveganblog
+gsutil -m cp -r -a public-read -z html,css,js build/* ${URL}/${LINK}
 gsutil -m cp -a public-read -z html,css,js assets/* ${URL}/assets
 
 echo Setting cache headers...
