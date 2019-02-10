@@ -21,7 +21,7 @@
   <body>
     <div class="shell">
       <div class="header">
-        <img src="../assets/pennywall-brown.png" class="pennywall" />
+        <img src="assets/banner-{{theme.palette}}.png" class="pennywall" />
       </div>
       <div class="form">
         <h2 style="width:100%;text-align:center">
@@ -32,7 +32,7 @@
         </div>
         <div style="text-align:center;width:100%">
           <i class="material-icons">
-            sentiment_very_satisfied
+            {{theme.icon}}
           </i>
         </div>
         <div
@@ -45,7 +45,7 @@
             quid-max-amount="{{button.max}}"
             quid-currency="{{product.currency}}"
             quid-product-id="{{product.id}}"
-            quid-palette="maroon"
+            quid-palette="{{button.palette}}"
             quid-product-url="{{product.url}}"
             quid-product-name="{{product.name}}"
             quid-product-description="{{product.description}}"

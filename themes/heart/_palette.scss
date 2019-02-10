@@ -3,11 +3,25 @@ $palette-maroon: (
   first: #c3073f,
   second: #950740,
   third: #6f2232,
-  bright: white,
   dull: #4e4e50,
   form-text: black,
   form-bg: whitesmoke,
-  form-border: 5px solid #963838
+  form-border: #950740,
+  footer-text: whitesmoke,
+  icon: #950740
+);
+
+$palette-metal: (
+  bg: white,
+  first: #984843,
+  second: #233237,
+  third: #181214,
+  dull: #4e4e50,
+  form-bg: #fff8e9,
+  form-text: 233237,
+  form-border: #8f7d66,
+  footer-text: #233237,
+  icon: #573b46
 );
 
 @function palette($entity) {

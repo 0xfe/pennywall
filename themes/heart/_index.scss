@@ -23,7 +23,7 @@ body {
   padding: 14;
   max-width: 300px;
   background: palette(form-bg);
-  border: palette(form-border);
+  border: 5px solid palette(form-border);
 }
 
 .message {
@@ -47,6 +47,7 @@ div.skip {
 i.material-icons {
   font-size: 80px;
   padding: 10px;
+  color: palette(icon);
 }
 
 img.pennywall {
@@ -60,7 +61,7 @@ a {
 }
 
 .footer {
-  color: palette(bright);
+  color: palette(footer-text);
 }
 
 i.material-icons.tiny {
