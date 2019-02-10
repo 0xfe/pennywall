@@ -94,6 +94,16 @@ To create a new theme, add a new directory under `themes/NAME` and include the f
 
 Run a local webserver and watch the files for changes.
 
+### First time setup
+
+```
+git clone this repo
+npm i
+npm link
+```
+
+### During development
+
 ```
 npx serve
 npm run watch
