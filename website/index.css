@@ -19,7 +19,17 @@ img.logo {
 
 div.main {
   font-size: 22px;
-  padding: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+div.main > p.description {
+  font-size: 18px;
+  text-align: center;
+}
+
+div.main > p.examples {
+  font-size: 18px;
   text-align: center;
 }
 
