@@ -1,8 +1,8 @@
 {
   "name": "pennywall",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A self-hosted donation / tip wall for sharing content",
-  "main": "index.js",
+  "main": "pennywall.js",
   "scripts": {
     "build": "./pennywall.js build",
     "test": "echo \"Error: no test specified\" && exit 1",
