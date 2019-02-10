@@ -1,5 +1,8 @@
 <p align="center">
   <img src="https://i.imgur.com/E9LyKea.png" width=450 />
+ <br/>
+ [ <a href="http://give.pennywall.io/kevsveganblog">See demo</a> ]
+ [ <a href="http://give.pennywall.io/kevsmaroonblog">Another demo</a> ]
 </p>
 
 ## Quickstart
