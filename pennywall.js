@@ -31,14 +31,17 @@ function readConfig(file) {
   return JSON.parse(data.toString());
 }
 
-function build(params) {
-  const themeName = params.theme.name;
+function getThemePath(themeName) {
   const themePath = path.join('themes', themeName);
 
   if (!fs.existsSync(themePath)) {
     fatal(`could not find theme "${themeName}" in ${themePath}`);
   }
 
+  return themePath;
+}
+
+function build(themePath, assetPath, params) {
   // Load index page
   const indexFile = mustExist(path.join(themePath, 'index.hbs'));
 
@@ -53,9 +56,6 @@ function build(params) {
   const jsFile = mustExist(path.join(themePath, 'index.js'));
 
   // Create output path
-  const outPath = 'build/';
-  log(chalk.green('building pennywall into'), outPath);
-  fs.ensureDirSync(outPath);
 
   let html;
   let js;
@@ -68,27 +68,43 @@ function build(params) {
     const htmlTemplate = handlebars.compile(
       fs.readFileSync(indexFile).toString(),
     );
-    html = htmlTemplate(params);
+
+    const newParams = params;
+    newParams.assetPath = assetPath;
+    html = htmlTemplate(newParams);
 
     css = sass.renderSync({
       file: sassFile,
-      outFile: path.join(outPath, 'index.css'),
+      outFile: 'index.css',
     });
   } catch (e) {
     fatal(e);
   }
 
+  return { html, js, css };
+}
+
+function writeFiles(outPath, html, js, css) {
+  log(chalk.green('building pennywall into'), outPath);
+  fs.ensureDirSync(outPath);
   fs.writeFileSync(path.join(outPath, 'index.html'), html);
   fs.writeFileSync(path.join(outPath, 'index.js'), js);
   fs.writeFileSync(path.join(outPath, 'index.css'), css.css);
-  fs.copySync(path.join(themePath, 'assets'), path.join(outPath, 'assets'));
+}
+
+function copyAssets(outPath, themePath) {
+  const assetPath = path.join(outPath, 'assets');
+  log(chalk.green('copying pennywall assets into'), assetPath);
+  fs.copySync(path.join(themePath, 'assets'), assetPath);
 }
 
 program
   .version('0.0.1')
-  .option('-c, --config [config]', 'enable some foo')
+  .option('-c, --config [config]', 'set configuration file')
+  .option('-o, --outpath [outpath]', 'generate files to path')
+  .option('--shared', 'shared asset path (for hosted environments)')
   .command('build')
-  .option('-k, --apiKey [override QUID API key]', 'enable some foo')
+  .option('-k, --apiKey [quidApiKey]', 'override QUID API key')
   .description('build pennywall using config file')
   .action((cmd) => {
     const configFile = cmd.parent.config || 'pennywall.json';
@@ -100,7 +116,14 @@ program
       }
     }
 
-    build(config);
+    log(cmd);
+    const outPath = cmd.parent.outpath || 'build/';
+    const themePath = getThemePath(config.theme.name);
+    const assetPath = cmd.parent.shared ? '../assets' : 'assets';
+
+    const files = build(themePath, assetPath, config);
+    writeFiles(outPath, files.html, files.js, files.css);
+    copyAssets(outPath, getThemePath(config.theme.name));
   });
 
 program.parse(process.argv);
@@ -108,3 +131,5 @@ program.parse(process.argv);
 if (!process.argv.slice(2).length) {
   program.outputHelp();
 }
+
+module.exports = { build };
