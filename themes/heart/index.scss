@@ -1,0 +1,89 @@
+$font-stack: "Barlow";
+
+$palette-maroon: (
+  bg: #4e0511,
+  first: #c3073f,
+  second: #950740,
+  third: #6f2232,
+  bright: white,
+  dull: #4e4e50,
+  form-text: black,
+  form-bg: whitesmoke,
+  form-border: 5px solid #963838
+);
+
+$palette: $palette-maroon;
+
+@function palette($entity) {
+  @return map-get($palette, $entity);
+}
+
+body {
+  font-family: $font-stack;
+  background: palette(bg);
+  padding: 0;
+  margin: 0;
+  color: palette(second);
+}
+
+.shell {
+  padding: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90%;
+  width: 100%;
+}
+
+.form {
+  border-radius: 5px;
+  padding: 14;
+  max-width: 300px;
+  background: palette(form-bg);
+  border: palette(form-border);
+}
+
+.message {
+  padding: 10;
+  color: palette(form-text);
+  text-align: center;
+}
+
+h2 {
+  padding: 0;
+  margin: 0;
+  color: palette(first);
+}
+
+div.skip {
+  text-align: center;
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+i.material-icons {
+  font-size: 80px;
+  padding: 10px;
+}
+
+img.pennywall {
+  width: 300px;
+  border-radius: 6px;
+}
+
+a {
+  color: palette(first);
+  text-decoration: none;
+}
+
+.footer {
+  color: palette(bright);
+}
+
+i.material-icons.tiny {
+  font-size: 16px;
+  padding: 3px;
+  color: palette(second);
+  margin-bottom: 6;
+}

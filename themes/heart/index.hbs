@@ -25,10 +25,10 @@
       </div>
       <div class="form">
         <h2 style="width:100%;text-align:center">
-          {{params.title}}
+          {{theme.title}}
         </h2>
         <div class="message">
-          {{params.message}}
+          {{theme.message}}
         </div>
         <div style="text-align:center;width:100%">
           <i class="material-icons">
@@ -53,10 +53,10 @@
             quid-text-paid="{{button.paidText}}"
           ></div>
         </div>
-        {{#if params.allowSkip}}
+        {{#if theme.allowSkip}}
           <div class="skip">
             <a href={{destination.url}}>
-              {{params.skipText}}
+              {{theme.skipText}}
             </a>
           </div>
         {{/if}}

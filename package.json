@@ -4,9 +4,9 @@
   "description": "A self-hosted donation / tip wall for sharing content",
   "main": "index.js",
   "scripts": {
-    "build": "./index.js build",
+    "build": "./pennywall.js build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon -e js,hbs,sass,json -w themes/ -w index.js -w pennywall.json -x npm run build"
+    "watch": "nodemon -e js,hbs,scss,json -w themes/ -w pennywall.js -w pennywall.json -x npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/0xfe/pennywall#readme",
   "dependencies": {
     "commander": "^2.19.0",
+    "fs-extra": "^7.0.1",
     "handlebars": "^4.1.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.10"

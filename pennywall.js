@@ -2,7 +2,7 @@
 
 const program = require('commander');
 const handlebars = require('handlebars');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const sass = require('node-sass');
 
@@ -17,10 +17,10 @@ function readConfig(file) {
 }
 
 function build(params) {
-  const themeName = params.theme;
+  const themeName = params.theme.name;
   const themePath = path.join('themes', themeName);
   const index = path.join(themePath, 'index.hbs');
-  const sassFile = path.join(themePath, 'index.sass');
+  const sassFile = path.join(themePath, 'index.scss');
   const jsFile = path.join(themePath, 'index.js');
 
   const theme = fs.readFileSync(index).toString();
@@ -32,9 +32,7 @@ function build(params) {
 
   const outPath = 'build';
   log('generating assets into', outPath);
-  if (!fs.existsSync(outPath)) {
-    fs.mkdirSync(outPath, { recursive: true });
-  }
+  fs.ensureDirSync(outPath);
 
   const css = sass.renderSync({
     file: sassFile,
@@ -44,6 +42,7 @@ function build(params) {
   fs.writeFileSync(path.join(outPath, 'index.html'), html);
   fs.writeFileSync(path.join(outPath, 'index.js'), js);
   fs.writeFileSync(path.join(outPath, 'index.css'), css.css);
+  fs.copySync(path.join(themePath, 'assets'), path.join(outPath, 'assets'));
 }
 
 program

@@ -1,6 +1,5 @@
 {
   "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
-  "theme": "default",
   "merchant": {
     "name": "Kev's Vegan Blog"
   },
@@ -24,7 +23,8 @@
     "text": "DONATE",
     "paidText": "THANKS FOR DONATING!"
   },
-  "params": {
+  "theme": {
+    "name": "heart",
     "title": "Donate to Kev's Vegan Blog",
     "message": "This site is supported with your donations. Please consider adding a tip.",
     "allowSkip": true,
