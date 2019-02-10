@@ -6,16 +6,6 @@ const path = require('path');
 const chalk = require('chalk');
 const pennywall = require('./index');
 
-function getThemePath(themeName, basePath) {
-  const themePath = path.join(basePath || 'themes', themeName);
-
-  if (!fs.existsSync(themePath)) {
-    pennywall.fatal(`could not find theme "${themeName}" in ${themePath}`);
-  }
-
-  return themePath;
-}
-
 function writeFiles(outPath, html, js, css) {
   pennywall.log(chalk.green('building pennywall into'), outPath);
   fs.ensureDirSync(outPath);
@@ -50,7 +40,10 @@ program
     }
 
     const outPath = cmd.parent.outpath || 'build/';
-    const themePath = getThemePath(config.theme.name, cmd.parent.themepath);
+    const themePath = pennywall.getThemePath(
+      config.theme.name,
+      cmd.parent.themepath,
+    );
     const assetPath = cmd.parent.shared ? '../assets' : 'assets';
 
     const files = pennywall.build(themePath, assetPath, config);

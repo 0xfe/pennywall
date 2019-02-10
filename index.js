@@ -25,6 +25,16 @@ function mustExist(file) {
   return file;
 }
 
+function getThemePath(themeName, basePath) {
+  const themePath = path.join(basePath || 'themes', themeName);
+
+  if (!fs.existsSync(themePath)) {
+    fatal(`could not find theme "${themeName}" in ${themePath}`);
+  }
+
+  return themePath;
+}
+
 function readConfig(file) {
   const data = fs.readFileSync(mustExist(file));
   return JSON.parse(data.toString());
@@ -76,6 +86,7 @@ function build(themePath, assetPath, params) {
 module.exports = {
   build,
   readConfig,
+  getThemePath,
   mustExist,
   log,
   fatal,
