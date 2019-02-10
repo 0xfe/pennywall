@@ -12,7 +12,8 @@ if [ "$LINK" == "" ]; then
 fi
 
 echo Uploading website...
-gsutil -m cp -r -a public-read -z html,css,js build/* ${URL}/${LINK}
+gsutil -m cp -a public-read -z html,css,js build/* ${URL}/${LINK}
+gsutil -m cp -r -a public-read -z html,css,js build/assets/* ${URL}/${LINK}/assets
 
 echo Setting cache headers...
 gsutil setmeta -h "Cache-control:public,max-age=120" -r ${URL}/${LINK}
