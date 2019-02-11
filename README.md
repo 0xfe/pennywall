@@ -7,6 +7,32 @@
 
 ## Quickstart
 
+### Hosted on pennywall.io
+
+Download the [configuration file](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json) and edit it.
+
+```
+curl -O https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json
+vi pennywall.json
+```
+
+Generate your pennywall.
+
+```
+curl -X POST "https://us-central1-pennywall.cloudfunctions.net/buildWall" \
+  -H "Content-Type:application/json" \
+  --data '@pennywall.json'
+```
+
+The path to your pennywall is returned in the response.
+
+```
+{"success": true, path: "https://give.pennywall.io/v1k87dp"}
+```
+
+
+### Self hosted
+
 Install pennywall:
 
 ```
