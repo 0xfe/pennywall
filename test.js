@@ -79,6 +79,26 @@ describe('Validations', () => {
       assert.notEqual(message, 'ok');
       assert.equal(result, false);
     });
+
+    it('URL prefix must be http or https', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ destination: { url: 'abc' } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+
+    it('should validate HTTP', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ destination: { url: 'http://foobar' } },
+      });
+
+      assert.equal(message, 'ok');
+      assert.notEqual(result, false);
+    });
   });
 
   describe('product', () => {

@@ -28,7 +28,7 @@
         <img src="assets/logo.png" class="logo"/>
       </div>
       <div class="main">
-        <code><strong>$ bash &lt;(curl -s https://pennywall.io/build)</strong>
+<code><strong>$ cat pennywall.json</strong>
 <span style="color:rgb(165, 72, 5)">{
   "apiKey": "YOUR_API_KEY",
   "destination": {
@@ -39,8 +39,8 @@
     "title": "Kev's Vegan Blog"
   }
 }</span>
-<strong>^D (CTRL-D)</strong>
 
+<strong>$ cat pennywall.json | bash &lt;(curl -s https://pennywall.io/build)</strong>
 {"success": true, path: "<a href='https://give.pennywall.io/v1myg6q'>https://give.pennywall.io/v1myg6q</a>"}
 </code>
         <p class="description">

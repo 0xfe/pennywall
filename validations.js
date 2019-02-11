@@ -21,6 +21,10 @@ function validate(config) {
     return [false, 'Invalid (or missing) destination (destination.url)'];
   }
 
+  if (!config.destination.url.match(/^https?:\/\//)) {
+    return [false, `URL must begin with http:// or https:// (destination.url): ${config.destination.url}`];
+  }
+
   if (!config.button) {
     return [false, 'Missing button information (button)'];
   }
