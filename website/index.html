@@ -15,6 +15,12 @@
     />
 
     <link rel="stylesheet" href="index.css" />
+    <script>
+      if (window.location.protocol == "http:" && window.location.hostname != "localhost") {
+        console.log("redirecting to secure site...")
+        window.location.protocol = "https:";
+      }
+    </script>
   </head>
   <body>
     <div class="shell">
