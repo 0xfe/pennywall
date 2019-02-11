@@ -34,6 +34,12 @@ The path to your pennywall is returned in the response.
 {"success": true, path: "https://give.pennywall.io/v1k87dp"}
 ```
 
+You can also send your configuration file directly with:
+
+```sh
+$ cat pennywall.json | bash <(curl -s https://pennywall.io/build)
+```
+
 Make sure to have your [QUID API key](https://how.quid.works/developer/quid-quickstart) handy to accept payments. (The key must allow access from origin `https://give.pennywall.io`.)
 
 ### Self hosted
