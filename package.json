@@ -1,6 +1,6 @@
 {
   "name": "pennywall",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A self-hosted donation / tip wall for sharing content",
   "main": "index.js",
   "scripts": {
