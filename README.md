@@ -5,6 +5,12 @@
  [ <a href="http://give.pennywall.io/kevsmaroonblog">Another demo</a> ]
 </p>
 
+## What is Pennywall?
+
+Pennywall is a micro paywall / donation-wall / tip-jar for sharing your content on social networks. You can generate as many pennywalls as you like, one for each link you want to share. Users can choose to tip you with a tiny payment, or simply skip past the wall to the target link.
+
+For example, here's one of my open-source projects, VexFlow, behind a pennywall: [VexFlow](https://give.pennywall.io/vexflow).
+
 ## Quickstart
 
 ### Hosted on pennywall.io
