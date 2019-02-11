@@ -20,7 +20,7 @@ Simply run `bash <(curl -s https://pennywall.io/build)`, and paste in your [penn
 ```sh
 $ bash <(curl -s https://pennywall.io/build)
 {
-  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
+  "apiKey": "YOUR_QUID_API_KEY",
   "destination": {
     "url": "https://kevsveganblog.com",
   },
