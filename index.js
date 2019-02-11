@@ -40,7 +40,56 @@ function readConfig(file) {
   return JSON.parse(data.toString());
 }
 
+function validate(config) {
+  const stringTooLong = (s, len) => typeof s !== 'string' || s.length > (len || 180);
+
+  if (!config.apiKey) {
+    return [false, 'Missing API key (apiKey)'];
+  }
+
+  if (!config.merchant || stringTooLong(config.merchant.name)) {
+    return [false, 'Invalid (or missing) merchant name (merchant.name)'];
+  }
+
+  if (!config.product) {
+    return [false, 'Missing product information (product)'];
+  }
+
+  const missingProductFields = [
+    'id',
+    'name',
+    'description',
+    'url',
+    'currency',
+  ].filter(field => stringTooLong(config.product[field]));
+
+  if (missingProductFields.length > 0) {
+    return [
+      false,
+      `Missing product field(s): ${missingProductFields.join(', ')}`,
+    ];
+  }
+
+  if (config.product.currency.length !== 3) {
+    return [
+      false,
+      `Invalid currency (product.currency): ${config.product.currency}`,
+    ];
+  }
+
+  if (typeof config.product.price !== 'number') {
+    return [false, `Invalid price (product.price): ${config.product.price}`];
+  }
+
+  return [true, 'ok'];
+}
+
 function build(themePath, assetPath, params) {
+  const [success, message] = validate(params);
+  if (!success) {
+    throw new Error(`Config error: ${message}`);
+  }
+
   // Load index page
   const indexFile = mustExist(path.join(themePath, 'index.hbs'));
 
@@ -84,6 +133,7 @@ function build(themePath, assetPath, params) {
 }
 
 module.exports = {
+  validate,
   build,
   readConfig,
   getThemePath,

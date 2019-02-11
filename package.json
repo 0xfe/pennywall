@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./pennywall.js build",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "watch": "nodemon -e js,hbs,scss,json -w themes/ -w pennywall.js -w pennywall.json -x npm run build"
   },
   "repository": {
@@ -28,14 +28,16 @@
     "commander": "^2.19.0",
     "fs-extra": "^7.0.1",
     "handlebars": "^4.1.0",
-    "node-sass": "^4.11.0",
-    "nodemon": "^1.18.10"
+    "node-sass": "^4.11.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-mocha": "^5.2.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.10"
   },
   "bin": {
     "pennywall": "./pennywall.js"
