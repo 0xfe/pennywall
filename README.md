@@ -9,7 +9,7 @@
 
 ### Hosted on pennywall.io
 
-Download the [configuration file](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json) and edit it. Make sure to have your [QUID API key](https://how.quid.works/developer/quid-quickstart) handy to accept payments.
+Download the [configuration file](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json) and edit it. Make sure to have your [QUID API key](https://how.quid.works/developer/quid-quickstart) handy to accept payments. (The key must allow access from origin `https://give.pennywall.io`.)
 
 ```
 curl -O https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json
