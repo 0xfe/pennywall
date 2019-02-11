@@ -22,35 +22,7 @@ $ bash <(curl -s https://pennywall.io/build)
 {
   "apiKey": "YOUR_QUID_API_KEY",
   "destination": {
-    "url": "https://kevsveganblog.com",
-  },
-  "merchant": {
-    "name": "Kev's Vegan Blog"
-  },
-  "product": {
-    "id": "10001",
-    "name": "Online donation",
-    "description": "Donation to Kev's Vegan Blog",
-    "url": "https://kevsveganblog.com/donate",
-    "price": 1.0,
-    "currency": "CAD"
-  },
-  "button": {
-    "slider": true,
-    "palette": "dark",
-    "min": 0,
-    "max": 2,
-    "text": "DONATE",
-    "paidText": "THANKS FOR DONATING!"
-  },
-  "theme": {
-    "name": "heart",
-    "palette": "metal",
-    "icon": "face",
-    "title": "Donate to Kev's Vegan Blog",
-    "message": "This site is supported with your donations. Please consider adding a tip.",
-    "allowSkip": true,
-    "skipText": "No thanks! Take me Kev's Vegan Blog."
+    "url": "https://kevsveganblog.com/post_how_to_eat_bananas"
   }
 }
 ^D (Hit CTRL-D)
