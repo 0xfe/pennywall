@@ -9,7 +9,7 @@
 
 ### Hosted on pennywall.io
 
-Simply run `bash <(curl -s https://pennywall.io/build)`, and past in [your pennywall configuration](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json).
+Simply run `bash <(curl -s https://pennywall.io/build)`, and paste in your [pennywall configuration](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json).
 
 ```sh
 $ bash <(curl -s https://pennywall.io/build)
