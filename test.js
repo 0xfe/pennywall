@@ -32,8 +32,7 @@ const goodConfig = {
     palette: 'maroon',
     icon: 'face',
     title: "Donate to Kev's Vegan Blog",
-    message:
-      'This site is supported with your donations. Please consider adding a tip.',
+    message: 'This site is supported with your donations. Please consider adding a tip.',
     allowSkip: true,
     skipText: "No thanks! Take me Kev's Vegan Blog.",
   },
@@ -60,6 +59,18 @@ describe('Validations', () => {
     });
   });
 
+  describe('destination', () => {
+    it('should have URL', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ destination: {} },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+  });
+
   describe('product', () => {
     it('missing product', () => {
       const [result, message] = pennywall.validate({
@@ -70,35 +81,119 @@ describe('Validations', () => {
       assert.notEqual(message, 'ok');
       assert.equal(result, false);
     });
-  });
 
-  it('missing fields', () => {
-    const [result, message] = pennywall.validate({
-      ...goodConfig,
-      ...{ product: { id: '0002' } },
+    it('missing fields', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ product: { id: '0002' } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
     });
 
-    assert.notEqual(message, 'ok');
-    assert.equal(result, false);
-  });
+    it('bad price', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ product: { ...goodConfig.product, ...{ price: 'abc' } } },
+      });
 
-  it('bad price', () => {
-    const [result, message] = pennywall.validate({
-      ...goodConfig,
-      ...{ product: { ...goodConfig.product, ...{ price: 'abc' } } },
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
     });
 
-    assert.notEqual(message, 'ok');
-    assert.equal(result, false);
+    it('bad currency', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ product: { ...goodConfig.product, ...{ currency: 'FIDD' } } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
   });
 
-  it('bad currency', () => {
-    const [result, message] = pennywall.validate({
-      ...goodConfig,
-      ...{ product: { ...goodConfig.product, ...{ currency: 'FIDD' } } },
+  describe('button', () => {
+    it('missing button', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ button: {} },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
     });
 
-    assert.notEqual(message, 'ok');
-    assert.equal(result, false);
+    it('missing fields', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ button: { text: 'PAID' } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+
+    it('bad minimum', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ button: { ...goodConfig.button, ...{ min: -1 } } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+
+    it('bad palette', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ theme: { ...goodConfig.button, ...{ palette: 'boo' } } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+  });
+
+  describe('theme', () => {
+    it('missing theme', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ theme: {} },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+
+    it('missing fields', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ theme: { name: 'heart' } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+
+    it('bad theme', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ theme: { ...goodConfig.theme, ...{ name: 'boo' } } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
+
+    it('bad palette', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ theme: { ...goodConfig.theme, ...{ palette: 'boo' } } },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
+    });
   });
 });
