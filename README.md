@@ -9,7 +9,7 @@
 
 ### Hosted on pennywall.io
 
-Download the [configuration file](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json) and edit it.
+Download the [configuration file](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json) and edit it. Make sure to have your [QUID API key](https://how.quid.works/developer/quid-quickstart) handy to accept payments.
 
 ```
 curl -O https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json
@@ -39,7 +39,7 @@ Install pennywall:
 npm i pennywall
 ```
 
-Edit your configuration file. You need a [QUID](https://quid.works) API key to accept payments.
+Edit your configuration file. You need a [QUID API key](https://how.quid.works/developer/quid-quickstart) API key to accept payments.
 
 ```
 vi pennywall.json
