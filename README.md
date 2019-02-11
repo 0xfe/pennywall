@@ -9,19 +9,45 @@
 
 ### Hosted on pennywall.io
 
-Download the [configuration file](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json) and edit it. Make sure to have your [QUID API key](https://how.quid.works/developer/quid-quickstart) handy to accept payments. (The key must allow access from origin `https://give.pennywall.io`.)
+Simply run `bash <(curl -s https://pennywall.io/build)`, and past in [your pennywall configuration](https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json).
 
-```
-curl -O https://raw.githubusercontent.com/0xfe/pennywall/master/pennywall.json
-vi pennywall.json
-```
-
-Generate your pennywall.
-
-```
-curl -X POST "https://us-central1-pennywall.cloudfunctions.net/buildWall" \
-  -H "Content-Type:application/json" \
-  --data '@pennywall.json'
+```sh
+$ bash <(curl -s https://pennywall.io/build)
+{
+  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
+  "destination": {
+    "url": "https://kevsveganblog.com",
+  },
+  "merchant": {
+    "name": "Kev's Vegan Blog"
+  },
+  "product": {
+    "id": "10001",
+    "name": "Online donation",
+    "description": "Donation to Kev's Vegan Blog",
+    "url": "https://kevsveganblog.com/donate",
+    "price": 1.0,
+    "currency": "CAD"
+  },
+  "button": {
+    "slider": true,
+    "palette": "dark",
+    "min": 0,
+    "max": 2,
+    "text": "DONATE",
+    "paidText": "THANKS FOR DONATING!"
+  },
+  "theme": {
+    "name": "heart",
+    "palette": "metal",
+    "icon": "face",
+    "title": "Donate to Kev's Vegan Blog",
+    "message": "This site is supported with your donations. Please consider adding a tip.",
+    "allowSkip": true,
+    "skipText": "No thanks! Take me Kev's Vegan Blog."
+  }
+}
+^D (Hit CTRL-D)
 ```
 
 The path to your pennywall is returned in the response.
@@ -30,6 +56,7 @@ The path to your pennywall is returned in the response.
 {"success": true, path: "https://give.pennywall.io/v1k87dp"}
 ```
 
+Make sure to have your [QUID API key](https://how.quid.works/developer/quid-quickstart) handy to accept payments. (The key must allow access from origin `https://give.pennywall.io`.)
 
 ### Self hosted
 
@@ -55,47 +82,6 @@ Push assets to your webserver:
 
 ```
 scp -r build/* you@yourhost:/your/www/path
-```
-
-## Configuration
-
-```json
-{
-  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
-  "merchant": {
-    "name": "Kev's Vegan Blog"
-  },
-  "product": {
-    "id": "10001",
-    "name": "Online donation",
-    "description": "Donation to Kev's Vegan Blog",
-    "url": "https://kevsveganblog.com/donate",
-    "price": 1.0,
-    "currency": "CAD"
-  },
-  "destination": {
-    "url": "https://kevsveganblog.com",
-    "method": "GET",
-    "sendReceipt": false
-  },
-  "button": {
-    "slider": true,
-    "palette": "dark",
-    "min": 0,
-    "max": 2,
-    "text": "DONATE",
-    "paidText": "THANKS FOR DONATING!"
-  },
-  "theme": {
-    "name": "heart",
-    "palette": "metal",
-    "icon": "face",
-    "title": "Donate to Kev's Vegan Blog",
-    "message": "This site is supported with your donations. Please consider adding a tip.",
-    "allowSkip": true,
-    "skipText": "No thanks! Take me Kev's Vegan Blog."
-  }
-}
 ```
 
 ## Examples
