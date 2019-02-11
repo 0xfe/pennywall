@@ -9,6 +9,10 @@ function validate(config) {
     return [false, 'Missing API key (apiKey)'];
   }
 
+  if (!config.apiKey.match(/^k[pt]-[A-Za-z0-9]+$/)) {
+    return [false, `Bad QUID API key (apiKey): ${config.apiKey}`];
+  }
+
   if (!config.merchant || stringTooLong(config.merchant.name)) {
     return [false, 'Invalid (or missing) merchant name (merchant.name)'];
   }

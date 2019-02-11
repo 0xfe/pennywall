@@ -39,11 +39,21 @@ const goodConfig = {
 };
 
 describe('Validations', () => {
-  describe('good config', () => {
-    it('should validate', () => {
+  describe('base config', () => {
+    it('good config should validate', () => {
       const [result, message] = pennywall.validate(goodConfig);
       assert.equal(message, 'ok');
       assert.equal(result, true);
+    });
+
+    it('bad API key', () => {
+      const [result, message] = pennywall.validate({
+        ...goodConfig,
+        ...{ apiKey: 'JFF' },
+      });
+
+      assert.notEqual(message, 'ok');
+      assert.equal(result, false);
     });
   });
 
