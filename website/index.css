@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Barlow";
+  font-family: 'Barlow';
 }
 
 div.shell {
@@ -36,4 +36,14 @@ div.main > p.examples {
 a {
   text-decoration: none;
   color: rgb(133, 65, 65);
+}
+
+code {
+  font-size: 14px;
+  display: block;
+  white-space: pre-wrap;
+  text-align: left;
+  background: rgb(255, 228, 199);
+  padding: 15px;
+  border-radius: 3px;
 }
