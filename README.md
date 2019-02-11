@@ -22,35 +22,7 @@ $ bash <(curl -s https://pennywall.io/build)
 {
   "apiKey": "YOUR_QUID_API_KEY",
   "destination": {
-    "url": "https://kevsveganblog.com",
-  },
-  "merchant": {
-    "name": "Kev's Vegan Blog"
-  },
-  "product": {
-    "id": "10001",
-    "name": "Online donation",
-    "description": "Donation to Kev's Vegan Blog",
-    "url": "https://kevsveganblog.com/donate",
-    "price": 1.0,
-    "currency": "CAD"
-  },
-  "button": {
-    "slider": true,
-    "palette": "dark",
-    "min": 0,
-    "max": 2,
-    "text": "DONATE",
-    "paidText": "THANKS FOR DONATING!"
-  },
-  "theme": {
-    "name": "heart",
-    "palette": "metal",
-    "icon": "face",
-    "title": "Donate to Kev's Vegan Blog",
-    "message": "This site is supported with your donations. Please consider adding a tip.",
-    "allowSkip": true,
-    "skipText": "No thanks! Take me Kev's Vegan Blog."
+    "url": "https://kevsveganblog.com/post_how_to_eat_bananas"
   }
 }
 ^D (Hit CTRL-D)
@@ -98,6 +70,46 @@ scp -r build/* you@yourhost:/your/www/path
   <a href="http://give.pennywall.io/kevsmaroonblog"><img src="https://imgur.com/kg0UEEW.png" width=300 /></a>
 </p>
 
+## Configuration
+
+```
+{
+  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
+  "merchant": {
+    "name": "Kev's Vegan Blog"
+  },
+  "product": {
+    "id": "10001",
+    "name": "Online donation",
+    "description": "Donation to Kev's Vegan Blog",
+    "url": "https://kevsveganblog.com/donate",
+    "price": 1.0,
+    "currency": "CAD"
+  },
+  "destination": {
+    "url": "https://kevsveganblog.com",
+    "method": "GET",
+    "sendReceipt": false
+  },
+  "button": {
+    "slider": true,
+    "palette": "dark",
+    "min": 0,
+    "max": 2,
+    "text": "DONATE",
+    "paidText": "THANKS FOR DONATING!"
+  },
+  "theme": {
+    "name": "heart",
+    "palette": "maroon",
+    "icon": "face",
+    "title": "Donate to Kev's Vegan Blog",
+    "message": "This site is supported with your donations. Please consider adding a tip.",
+    "allowSkip": true,
+    "skipText": "No thanks! Take me Kev's Vegan Blog."
+  }
+}
+```
 
 ## Themes
 
