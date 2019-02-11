@@ -80,7 +80,7 @@ function build(themePath, assetPath, params) {
     fatal(e);
   }
 
-  return { html, js, css };
+  return { html, js, css: css.css };
 }
 
 module.exports = {

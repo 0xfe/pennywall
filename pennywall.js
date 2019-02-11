@@ -11,7 +11,7 @@ function writeFiles(outPath, html, js, css) {
   fs.ensureDirSync(outPath);
   fs.writeFileSync(path.join(outPath, 'index.html'), html);
   fs.writeFileSync(path.join(outPath, 'index.js'), js);
-  fs.writeFileSync(path.join(outPath, 'index.css'), css.css);
+  fs.writeFileSync(path.join(outPath, 'index.css'), css);
 }
 
 function copyAssets(outPath, themePath) {
