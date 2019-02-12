@@ -7,7 +7,7 @@ $palette-maroon: (
   form-text: black,
   form-bg: whitesmoke,
   form-border: #950740,
-  footer-text: whitesmoke,
+  footer-text: rgb(167, 151, 151),
   icon: #950740
 );
 
@@ -25,16 +25,16 @@ $palette-metal: (
 );
 
 $palette-blue: (
-  bg: white,
+  bg: #0f367e,
   first: #424c7e,
   second: #0f3846,
   third: #4e5cfc,
   dull: #4e4e50,
-  form-bg: #fff8e9,
+  form-bg: #f2f2f2,
   form-text: 233237,
-  form-border: #5b519f,
-  footer-text: #233237,
-  icon: #573b46
+  form-border: #5b6c91,
+  footer-text: #758c94,
+  icon: #5b6c91
 );
 
 @function palette($entity) {

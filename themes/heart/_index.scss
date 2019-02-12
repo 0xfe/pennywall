@@ -1,4 +1,4 @@
-$font-stack: "Barlow";
+$font-stack: 'Barlow';
 
 body {
   font-family: $font-stack;
@@ -32,6 +32,10 @@ body {
   text-align: center;
 }
 
+.header {
+  padding-top: 20;
+}
+
 h2 {
   padding: 0;
   margin: 0;
@@ -55,11 +59,6 @@ img.pennywall {
   border-radius: 6px;
 }
 
-a {
-  color: palette(first);
-  text-decoration: none;
-}
-
 .footer {
   color: palette(footer-text);
 }
@@ -67,6 +66,11 @@ a {
 i.material-icons.tiny {
   font-size: 16px;
   padding: 3px;
-  color: palette(second);
+  color: palette(footer-text);
   margin-bottom: 6;
+}
+
+.footer > a {
+  color: palette(footer-text);
+  text-decoration: none;
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./src/pennywall.js build",
     "test": "mocha",
-    "watch": "nodemon -e js,hbs,scss,json -w themes/ -w src/ -x npm run build"
+    "watch": "nodemon -e js,hbs,scss,json -w themes/ -w src/ -w pennywall.json -x npm run build"
   },
   "repository": {
     "type": "git",

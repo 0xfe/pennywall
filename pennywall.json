@@ -18,7 +18,7 @@
   },
   "button": {
     "slider": true,
-    "palette": "dark",
+    "palette": "blue",
     "min": 0,
     "max": 2,
     "text": "DONATE",
@@ -27,7 +27,7 @@
   "theme": {
     "name": "heart",
     "palette": "blue",
-    "icon": "face",
+    "icon": "favorite",
     "title": "Donate to Kev's Vegan Blog",
     "message": "This site is supported with your donations. Please consider adding a tip.",
     "allowSkip": true,
