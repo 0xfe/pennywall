@@ -1,18 +1,18 @@
 {
-  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
+  "apiKey": "kt-OUCWT7WQ7J6JDPXRN3CA95CKEN4L9F92",
   "merchant": {
-    "name": "Kev's Vegan Blog"
+    "name": "VexFlow"
   },
   "product": {
     "id": "10001",
     "name": "Online donation",
-    "description": "Donation to Kev's Vegan Blog",
-    "url": "https://kevsveganblog.com/donate",
+    "description": "Donation to VexFlow",
+    "url": "https://vexflow.com",
     "price": 1.0,
     "currency": "CAD"
   },
   "destination": {
-    "url": "https://kevsveganblog.com",
+    "url": "http://vexflow.com",
     "method": "GET",
     "sendReceipt": false
   },
@@ -26,11 +26,11 @@
   },
   "theme": {
     "name": "heart",
-    "palette": "blue",
+    "palette": "metal",
     "icon": "face",
-    "title": "Donate to Kev's Vegan Blog",
-    "message": "This site is supported with your donations. Please consider adding a tip.",
+    "title": "Donate to VexFlow",
+    "message": "VexFlow is supported with your donations. Please consider adding a tip.",
     "allowSkip": true,
-    "skipText": "No thanks! Take me Kev's Vegan Blog."
+    "skipText": "No thanks! Take me vexflow.com."
   }
 }

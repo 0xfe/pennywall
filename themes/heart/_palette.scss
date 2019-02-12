@@ -24,6 +24,19 @@ $palette-metal: (
   icon: #573b46
 );
 
+$palette-blue: (
+  bg: white,
+  first: #424c7e,
+  second: #0f3846,
+  third: #4e5cfc,
+  dull: #4e4e50,
+  form-bg: #fff8e9,
+  form-text: 233237,
+  form-border: #5b519f,
+  footer-text: #233237,
+  icon: #573b46
+);
+
 @function palette($entity) {
   @return map-get($palette, $entity);
 }

@@ -1,12 +1,12 @@
 {
   "name": "pennywall",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A self-hosted donation / tip wall for sharing content",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "build": "./pennywall.js build",
+    "build": "./src/pennywall.js build",
     "test": "mocha",
-    "watch": "nodemon -e js,hbs,scss,json -w themes/ -w pennywall.js -w pennywall.json -x npm run build"
+    "watch": "nodemon -e js,hbs,scss,json -w themes/ -w src/ -x npm run build"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,6 @@
     "nodemon": "^1.18.10"
   },
   "bin": {
-    "pennywall": "./pennywall.js"
+    "pennywall": "./src/pennywall.js"
   }
 }

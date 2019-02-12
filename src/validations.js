@@ -1,6 +1,4 @@
-const validThemes = ['heart'];
-const validButtonPalettes = ['default', 'dark', 'blue', 'maroon', 'green', 'red', 'orange'];
-const validThemePalettes = ['maroon', 'metal'];
+const { validThemes, validButtonPalettes, validThemePalettes } = require('./themes');
 
 function validate(config) {
   const stringTooLong = (s, len) => typeof s !== 'string' || s.length > (len || 180);
