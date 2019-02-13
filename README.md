@@ -133,7 +133,8 @@ Run a local webserver and watch the files for changes.
 ### First time setup
 
 ```
-git clone this repo
+git clone this-repo
+cd repo-local-directory
 npm i
 npm link
 ```
