@@ -123,7 +123,7 @@ Current themes:
 
 * `heart` with palettes `maroon`, `metal`
 
-To create a new theme, add a new directory under `themes/NAME` and include the files `index.hbs` (handlebars HTML), `index.js`, and `index.scss`. For custom palettes, you and have multiple `index-PALETE.scss` files.
+To create a new theme, add a new directory under `themes/NAME` and include the files `index.hbs` (handlebars HTML), `index.js`, and `index.scss`. For custom palettes, you can have multiple `index-PALETE.scss` files.
 
 
 ## Hacking on this repo
