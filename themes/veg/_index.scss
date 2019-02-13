@@ -1,0 +1,84 @@
+$font-stack: 'Barlow';
+
+body {
+  font-family: $font-stack;
+  background-image: url("/assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background: palette(bg); */
+  padding: 0;
+  margin: 0;
+  color: palette(second);
+}
+
+.shell {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90%;
+  width: 100%;
+}
+
+.header {
+  padding-top: 20;
+}
+
+.header > img {
+  width: 300px;
+  border-radius: 6px;
+}
+
+.form {
+  border-radius: 5px;
+  padding: 14;
+  max-width: 280px;
+  background: palette(form-bg);
+}
+
+.form > h2 {
+  font-family: 'Acme';
+  padding: 0;
+  margin: 0;
+  color: palette(first);
+}
+
+.form > .message {
+  padding: 10;
+  color: palette(form-text);
+  text-align: center;
+}
+
+.form > .skip {
+  text-align: center;
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+.form > .skip > a {
+  color: palette(first);
+  text-decoration: none;
+}
+
+.form > .icon > i {
+  font-size: 80px;
+  padding: 10px;
+  color: palette(icon);
+}
+
+.footer {
+  color: palette(footer-text);
+}
+
+.footer > i {
+  font-size: 16px;
+  padding: 3px;
+  color: palette(footer-text);
+  margin-bottom: 6;
+}
+
+.footer > a {
+  color: palette(footer-text);
+  text-decoration: none;
+}

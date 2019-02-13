@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>
+      {{title}}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+     />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Barlow"
+     />
+
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://js.quid.works/v1/assets/quid.css" />
+    <script>
+      if (window.location.protocol == "http:" && window.location.hostname != "localhost") {
+        console.log("redirecting to secure site...")
+        window.location.protocol = "https:";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="header">
+
+      </div>
+      <div class="form">
+        <h2 style="width:100%;text-align:center">
+          {{theme.title}}
+        </h2>
+        <div class="message">
+          {{theme.message}}
+        </div>
+        <div class="icon" style="text-align:center;width:100%">
+          <i class="material-icons">
+            {{theme.icon}}
+          </i>
+        </div>
+        <div
+          style="width:100%;display:flex;justify-items:center;align-items:center"
+        >
+          <div
+            class="quid-slider"
+            quid-amount="{{product.price}}"
+            quid-min-amount="{{button.min}}"
+            quid-max-amount="{{button.max}}"
+            quid-currency="{{product.currency}}"
+            quid-product-id="{{product.id}}"
+            quid-palette="{{button.palette}}"
+            quid-product-url="{{product.url}}"
+            quid-product-name="{{product.name}}"
+            quid-product-description="{{product.description}}"
+            quid-text="{{button.text}}"
+            quid-text-paid="{{button.paidText}}"
+          ></div>
+        </div>
+        {{#if theme.allowSkip}}
+          <div class="skip">
+            <a href={{destination.url}}>
+              {{theme.skipText}}
+            </a>
+          </div>
+        {{/if}}
+      </div>
+      <div class="footer">
+        Get your own
+        <i class="material-icons tiny">
+          favorite
+        </i>
+        at
+        <a target="_blank" href="https://pennywall.io">
+          pennywall.io
+        </a>
+      </div>
+    </div>
+    <script src="https://js.quid.works/v1/client.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
