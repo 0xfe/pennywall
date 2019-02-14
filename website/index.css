@@ -11,16 +11,22 @@ div.shell {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 20;
 }
 
 img.logo {
-  width: 400px;
+  width: 340px;
 }
 
 div.main {
   font-size: 22px;
   padding: 10px;
   text-align: center;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 600px;
 }
 
 div.main > p.description {
@@ -31,6 +37,23 @@ div.main > p.description {
 div.main > p.examples {
   font-size: 18px;
   text-align: center;
+}
+
+.action {
+  padding: 10px;
+}
+
+.button {
+  background: rgb(49, 69, 121);
+  border-radius: 5px;
+  padding: 15px;
+  padding-bottom: 18px;
+  color: white;
+}
+
+.button > a {
+  color: white;
+  font-size: 14px;
 }
 
 a {
