@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,13 +9,12 @@ body {
 }
 
 div.shell {
-  display: flex;
-  width: 100%;
   height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20;
+  padding: 20px;
 }
 
 img.logo {
@@ -19,6 +22,7 @@ img.logo {
 }
 
 div.main {
+  width: 100%;
   font-size: 22px;
   padding: 10px;
   text-align: center;
@@ -69,4 +73,11 @@ code {
   background: rgb(255, 228, 199);
   padding: 15px;
   border-radius: 3px;
+}
+
+img.screenshot {
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px 2px #888888;
+  padding: 0;
+  margin: 0;
 }
