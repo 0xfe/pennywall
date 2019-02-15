@@ -1,0 +1,42 @@
+$palette-maroon: (
+  bg: #4e0511,
+  first: #c3073f,
+  second: #950740,
+  third: #6f2232,
+  dull: #4e4e50,
+  form-text: black,
+  form-bg: whitesmoke,
+  form-border: #950740,
+  footer-text: #ffffff,
+  icon: #950740
+);
+
+$palette-metal: (
+  bg: white,
+  first: #984843,
+  second: #233237,
+  third: #181214,
+  dull: #4e4e50,
+  form-bg: #fafafa,
+  form-text: 233237,
+  form-border: #8f7d66,
+  footer-text: #ffffff,
+  icon: #573b46
+);
+
+$palette-blue: (
+  bg: #0f367e,
+  first: #424c7e,
+  second: #0f3846,
+  third: #4e5cfc,
+  dull: #4e4e50,
+  form-bg: #f2f2f2,
+  form-text: 233237,
+  form-border: #5b6c91,
+  footer-text: #ffffff,
+  icon: #5b6c91
+);
+
+@function palette($entity) {
+  @return map-get($palette, $entity);
+}
