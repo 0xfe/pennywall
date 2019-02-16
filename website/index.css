@@ -13,7 +13,6 @@ div.shell {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
 }
 
 img.logo {
@@ -22,7 +21,7 @@ img.logo {
 
 div.main {
   width: 100%;
-  font-size: 22px;
+  font-size: 16px;
   padding: 10px;
   text-align: center;
   display: flex;
@@ -61,20 +60,22 @@ code {
   background: rgb(255, 228, 199);
   padding: 15px;
   border-radius: 3px;
+  margin: 10px;
 }
 
 img.screenshot {
   border-radius: 4px;
   box-shadow: 2px 2px 5px 2px #888888;
   padding: 0;
-  margin: 5;
+  margin: 0;
 }
 
 div.screenshots {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 div.examples {

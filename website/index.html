@@ -11,54 +11,94 @@
 
     <link rel="stylesheet" href="index.css" />
     <script>
-      if (window.location.protocol == "http:" && window.location.hostname != "localhost") {
-        console.log("redirecting to secure site...")
-        window.location.protocol = "https:";
+      if (
+        window.location.protocol == 'http:' &&
+        window.location.hostname != 'localhost'
+      ) {
+        console.log('redirecting to secure site...');
+        window.location.protocol = 'https:';
       }
     </script>
   </head>
   <body>
     <div class="shell">
       <div class="header">
-        <img src="assets/logo.png" class="logo"/>
+        <img src="assets/logo.png" class="logo" />
       </div>
       <div class="main">
-        <div style="font-size: 16">
-        Pennywall is a themeable micro paywall / donation-wall / tip-jar for sharing your content on social networks. You can
-        generate as many pennywalls as you like, one for each link you want to share.
+        <div>
+          Pennywall lets you put up instant donation-walls, paywalls, or tip
+          jars, and share them on social networks.
         </div>
 
         <div class="screenshots">
           <div style="text-align: center">
             <a href="https://give.pennywall.io/v1cbiwm" target="_blank">
-              <img class="screenshot" src="assets/sushi-screenshot.png" width=360/>
+              <img
+                class="screenshot"
+                src="assets/sushi-screenshot.png"
+                width="320"
+              />
             </a>
           </div>
-          <!--
-          <div style="text-align: center">
-            <img class="screenshot" src="assets/blueeggs-screenshot.png" width=360/>
-          </div>
-          <div style="text-align: center">
-            <img class="screenshot" src="assets/pennywall-screenshot.png" width=360/>
-          </div>
-          -->
         </div>
 
-        <div class="action">
-          <div class="button">
-            <a href="https://pennywall.io/create">CREATE A PENNYWALL</a>
+        <div style="padding-top: 10px; font-size: 14px;">
+          Pennywall uses
+          <a
+            href="https://how.quid.works/selling-with-quid/setup-a-pennywall-with-quid"
+            >QUID</a
+          >
+          to accept and process payments as low as 1¢.
+          <div class="action">
+            <div class="button">
+              <a href="https://pennywall.io/create">CREATE A PENNYWALL</a>
+            </div>
           </div>
         </div>
 
-        <div class="examples">
-            [ <a href="https://how.quid.works/selling-with-quid/setup-a-pennywall-with-quid" target="_blank">Get Started</a> ]
-            [ <a href="https://github.com/0xfe/pennywall" target="_blank">Developers</a> ]
-            [ <a href="https://github.com/0xfe/pennywall/blob/master/pennywall.json" target="_blank">Configuration</a> ]
+        <div>
+          <ul style="text-align: left;">
+            <li>Accept donations for every new blog post</li>
+            <li>Charge for your high-resolution photographs</li>
+            <li>Collect tips for your podcast episodes</li>
+            <li>Monetize your unlisted youtube videos</li>
+            <li>
+              Generate as many pennywalls as you like
+            </li>
+          </ul>
         </div>
-
-        <code>$ cat <a href="https://github.com/0xfe/pennywall/blob/master/pennywall.json" target="_blank">pennywall.json</a> | bash &lt;(curl -s https://pennywall.io/build)</code>
-
-        <a href="https://github.com/0xfe/pennywall"><img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-red@2x.png" alt="Fork me on GitHub"></a>
       </div>
+
+      <div class="examples">
+        [
+        <a
+          href="https://how.quid.works/selling-with-quid/setup-a-pennywall-with-quid"
+          target="_blank"
+          >Get Started</a
+        >
+        ] [
+        <a href="https://github.com/0xfe/pennywall" target="_blank"
+          >Developers</a
+        >
+        ] [
+        <a
+          href="https://github.com/0xfe/pennywall/blob/master/pennywall.json"
+          target="_blank"
+          >Configuration</a
+        >
+        ]
+      </div>
+
+      <!-- prettier-ignore -->
+      <code>$ cat <a href="https://github.com/0xfe/pennywall/blob/master/pennywall.json" target="_blank" >pennywall.json</a > | bash &lt;(curl -s https://pennywall.io/build)</code>
+
+      <a href="https://github.com/0xfe/pennywall"
+        ><img
+          style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px;"
+          src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-red@2x.png"
+          alt="Fork me on GitHub"
+      /></a>
+    </div>
   </body>
 </html>
