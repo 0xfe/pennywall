@@ -4,104 +4,98 @@ const handlebars = require('handlebars');
 const fs = require('fs-extra');
 const path = require('path');
 const sass = require('node-sass');
-const chalk = require('chalk');
-const validations = require('./validations');
-
-function log(...args) {
-  // eslint-disable-next-line
-  console.log(...args);
-}
-
-function fatal(...args) {
-  // eslint-disable-next-line
-  console.error(chalk.red('ERROR'), ...args);
-  process.exit(-1);
-}
+const { validate } = require('./validations');
+const { ThemeManager } = require('./themes');
 
 function mustExist(file) {
   if (!fs.existsSync(file)) {
-    fatal(`could not read file: ${file}`);
+    throw new Error(`could not read file: ${file}`);
   }
 
   return file;
 }
 
-function getThemePath(themeName, basePath) {
-  if (typeof basePath === 'string' && basePath.length > 0) {
-    const themePath = path.join(basePath, themeName);
+class Pennywall {
+  constructor(options) {
+    this.assetPath = (options && options.assetPath) || 'assets';
+    this.themeManager = (options && options.themeManager) || new ThemeManager();
+    this.reset();
+  }
 
-    if (!fs.existsSync(themePath)) {
-      fatal(`could not find theme "${themeName}" in ${themePath}`);
+  reset() {
+    this.output = {
+      success: false,
+      html: '',
+      js: '',
+      css: '',
+    };
+  }
+
+  loadConfig(file) {
+    const data = fs.readFileSync(mustExist(file));
+    this.config = JSON.parse(data.toString());
+    return this.config;
+  }
+
+  setConfig(config) {
+    this.config = config;
+    return this;
+  }
+
+  validate() {
+    return validate(this.config, this.themeManager);
+  }
+
+  build() {
+    this.reset();
+    const [success, message] = this.validate();
+    this.themePath = this.themeManager.getPath(this.config.theme.name);
+    if (!success) {
+      return { success, message };
     }
 
-    return themePath;
-  }
+    // Load index page
+    const indexFile = mustExist(path.join(this.themePath, 'index.hbs'));
 
-  if (fs.existsSync(path.join('themes', themeName))) {
-    return path.join('themes', themeName);
-  }
+    // Load SASS
+    const sassFile = mustExist(this.config.theme.palette ? path.join(this.themePath, `index-${this.config.theme.palette}.scss`) : path.join(this.themePath, 'index.scss'));
 
-  if (fs.existsSync(path.join('node_modules/pennywall/themes', themeName))) {
-    return path.join('node_modules/pennywall/themes', themeName);
-  }
+    // Load index JS
+    const jsFile = mustExist(path.join(this.themePath, 'index.js'));
 
-  fatal(`could not find theme "${themeName}" in themes/ or node_modules/pennywall/themes`);
-  return '';
+    // Create output path
+
+    let html;
+    let js;
+    let css;
+
+    try {
+      const jsTemplate = handlebars.compile(fs.readFileSync(jsFile).toString());
+      js = jsTemplate(this.config);
+
+      const htmlTemplate = handlebars.compile(fs.readFileSync(indexFile).toString());
+
+      const newParams = this.config;
+      newParams.assetPath = this.assetPath;
+      html = htmlTemplate(newParams);
+
+      css = sass.renderSync({
+        file: sassFile,
+        outFile: 'index.css',
+      });
+    } catch (e) {
+      return { success: false, message: e };
+    }
+
+    this.output = {
+      success: true,
+      html,
+      js,
+      css: css.css,
+    };
+
+    return this.output;
+  }
 }
 
-function readConfig(file) {
-  const data = fs.readFileSync(mustExist(file));
-  return JSON.parse(data.toString());
-}
-
-function build(themePath, assetPath, params) {
-  const [success, message] = validations.validate(params);
-  if (!success) {
-    throw new Error(`Config error: ${message}`);
-  }
-
-  // Load index page
-  const indexFile = mustExist(path.join(themePath, 'index.hbs'));
-
-  // Load SASS
-  const sassFile = mustExist(params.theme.palette ? path.join(themePath, `index-${params.theme.palette}.scss`) : path.join(themePath, 'index.scss'));
-
-  // Load index JS
-  const jsFile = mustExist(path.join(themePath, 'index.js'));
-
-  // Create output path
-
-  let html;
-  let js;
-  let css;
-
-  try {
-    const jsTemplate = handlebars.compile(fs.readFileSync(jsFile).toString());
-    js = jsTemplate(params);
-
-    const htmlTemplate = handlebars.compile(fs.readFileSync(indexFile).toString());
-
-    const newParams = params;
-    newParams.assetPath = assetPath;
-    html = htmlTemplate(newParams);
-
-    css = sass.renderSync({
-      file: sassFile,
-      outFile: 'index.css',
-    });
-  } catch (e) {
-    fatal(e);
-  }
-
-  return { html, js, css: css.css };
-}
-
-module.exports = {
-  validate: validations.validate,
-  build,
-  readConfig,
-  getThemePath,
-  mustExist,
-  log,
-  fatal,
-};
+module.exports = { Pennywall, ThemeManager };

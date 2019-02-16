@@ -1,5 +1,5 @@
 const assert = require('assert');
-const pennywall = require('./index');
+const { Pennywall } = require('./index');
 
 const goodConfig = {
   apiKey: 'kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7',
@@ -38,16 +38,21 @@ const goodConfig = {
   },
 };
 
+function validate(config) {
+  const pennywall = new Pennywall();
+  return pennywall.setConfig(config).validate();
+}
+
 describe('Validations', () => {
   describe('base config', () => {
     it('good config should validate', () => {
-      const [result, message] = pennywall.validate(goodConfig);
+      const [result, message] = validate(goodConfig);
       assert.equal(message, 'ok');
       assert.equal(result, true);
     });
 
     it('bad API key', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ apiKey: 'JFF' },
       });
@@ -59,7 +64,7 @@ describe('Validations', () => {
 
   describe('merchant', () => {
     it('should validate name', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ merchant: {} },
       });
@@ -71,7 +76,7 @@ describe('Validations', () => {
 
   describe('destination', () => {
     it('should have URL', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ destination: {} },
       });
@@ -81,7 +86,7 @@ describe('Validations', () => {
     });
 
     it('URL prefix must be http or https', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ destination: { url: 'abc' } },
       });
@@ -91,7 +96,7 @@ describe('Validations', () => {
     });
 
     it('should validate HTTP', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ destination: { url: 'http://foobar' } },
       });
@@ -103,7 +108,7 @@ describe('Validations', () => {
 
   describe('product', () => {
     it('missing product', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ product: {} },
       });
@@ -113,7 +118,7 @@ describe('Validations', () => {
     });
 
     it('missing fields', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ product: { id: '0002' } },
       });
@@ -123,7 +128,7 @@ describe('Validations', () => {
     });
 
     it('bad price', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ product: { ...goodConfig.product, ...{ price: 'abc' } } },
       });
@@ -133,7 +138,7 @@ describe('Validations', () => {
     });
 
     it('bad currency', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ product: { ...goodConfig.product, ...{ currency: 'FIDD' } } },
       });
@@ -145,7 +150,7 @@ describe('Validations', () => {
 
   describe('button', () => {
     it('missing button', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ button: {} },
       });
@@ -155,7 +160,7 @@ describe('Validations', () => {
     });
 
     it('missing fields', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ button: { text: 'PAID' } },
       });
@@ -165,7 +170,7 @@ describe('Validations', () => {
     });
 
     it('bad minimum', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ button: { ...goodConfig.button, ...{ min: -1 } } },
       });
@@ -175,7 +180,7 @@ describe('Validations', () => {
     });
 
     it('bad palette', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ theme: { ...goodConfig.button, ...{ palette: 'boo' } } },
       });
@@ -187,7 +192,7 @@ describe('Validations', () => {
 
   describe('theme', () => {
     it('missing theme', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ theme: {} },
       });
@@ -197,7 +202,7 @@ describe('Validations', () => {
     });
 
     it('missing fields', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ theme: { name: 'heart' } },
       });
@@ -207,7 +212,7 @@ describe('Validations', () => {
     });
 
     it('bad theme', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ theme: { ...goodConfig.theme, ...{ name: 'boo' } } },
       });
@@ -217,7 +222,7 @@ describe('Validations', () => {
     });
 
     it('bad palette', () => {
-      const [result, message] = pennywall.validate({
+      const [result, message] = validate({
         ...goodConfig,
         ...{ theme: { ...goodConfig.theme, ...{ palette: 'boo' } } },
       });

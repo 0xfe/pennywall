@@ -1,6 +1,4 @@
-const { validThemes, validButtonPalettes, validThemePalettes } = require('./themes');
-
-function validate(config) {
+function validate(config, themeManager) {
   const stringTooLong = (s, len) => typeof s !== 'string' || s.length > (len || 180);
 
   if (!config.apiKey) {
@@ -66,15 +64,11 @@ function validate(config) {
     return [false, `Missing theme field(s): ${missingThemeFields.join(', ')}`];
   }
 
-  if (!validThemes.includes(config.theme.name)) {
-    return [false, `Invalid theme (theme.name): ${config.theme.name}`];
+  if (!themeManager.exists(config.theme.name, config.theme.palette)) {
+    return [false, `Invalid theme or palette (theme.name): ${config.theme.name}/${config.theme.palette}`];
   }
 
-  if (!validThemePalettes.includes(config.theme.palette)) {
-    return [false, `Invalid theme palette (theme.palette): ${config.theme.palette}`];
-  }
-
-  if (!validButtonPalettes.includes(config.button.palette)) {
+  if (!themeManager.hasSlider(config.button.palette)) {
     return [false, `Invalid button palette (button.palette): ${config.button.palette}`];
   }
 

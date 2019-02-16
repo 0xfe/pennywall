@@ -4,10 +4,15 @@ const program = require('commander');
 const fs = require('fs-extra');
 const path = require('path');
 const chalk = require('chalk');
-const pennywall = require('./index');
+const { Pennywall, ThemeManager } = require('./index');
+
+function log(...args) {
+  // eslint-disable-next-line
+  console.log(...args);
+}
 
 function writeFiles(outPath, html, js, css) {
-  pennywall.log(chalk.green('building pennywall into'), outPath);
+  log(chalk.green('building pennywall into'), outPath);
   fs.ensureDirSync(outPath);
   fs.writeFileSync(path.join(outPath, 'index.html'), html);
   fs.writeFileSync(path.join(outPath, 'index.js'), js);
@@ -16,7 +21,7 @@ function writeFiles(outPath, html, js, css) {
 
 function copyAssets(outPath, themePath) {
   const assetPath = path.join(outPath, 'assets');
-  pennywall.log(chalk.green('copying pennywall assets into'), assetPath);
+  log(chalk.green('copying pennywall assets into'), assetPath);
   fs.copySync(path.join(themePath, 'assets'), assetPath);
 }
 
@@ -31,24 +36,26 @@ program
   .description('build pennywall using config file')
   .action((cmd) => {
     const configFile = cmd.parent.config || 'pennywall.json';
-    const config = pennywall.readConfig(configFile);
+    const assetPath = cmd.parent.shared ? '../assets' : 'assets';
+
+    const themeManager = new ThemeManager(cmd.parent.themepath);
+    const pennywall = new Pennywall({ assetPath, themeManager });
+
+    const config = pennywall.loadConfig(configFile);
 
     if (cmd) {
       if (cmd.apiKey) {
+        // HACK BEWARE: here be dragons
         config.apiKey = cmd.apiKey;
+        pennywall.setConfig(config);
       }
     }
 
     const outPath = cmd.parent.outpath || 'build/';
-    const themePath = pennywall.getThemePath(
-      config.theme.name,
-      cmd.parent.themepath,
-    );
-    const assetPath = cmd.parent.shared ? '../assets' : 'assets';
 
-    const files = pennywall.build(themePath, assetPath, config);
+    const files = pennywall.build();
     writeFiles(outPath, files.html, files.js, files.css);
-    copyAssets(outPath, themePath);
+    copyAssets(outPath, themeManager.getPath(config.theme.name));
   });
 
 program.parse(process.argv);
