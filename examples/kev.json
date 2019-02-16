@@ -1,0 +1,36 @@
+{
+  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
+  "merchant": {
+    "name": "Kev's Vegan Blog"
+  },
+  "product": {
+    "id": "10001",
+    "name": "Sweet Potato and Carrot Soup",
+    "description": "Donation to Kev's Vegan Blog",
+    "url": "https://kevsveganblog.com/donate",
+    "price": 1.0,
+    "currency": "CAD"
+  },
+  "destination": {
+    "url": "https://www.kevsveganblog.com/blog/2019/1/23/sweet-potato-and-carrot-soup",
+    "method": "GET",
+    "sendReceipt": false
+  },
+  "button": {
+    "slider": true,
+    "palette": "maroon",
+    "min": 0,
+    "max": 2,
+    "text": "ADD A TIP",
+    "paidText": "THANKS FOR DONATING!"
+  },
+  "theme": {
+    "name": "vegout",
+    "palette": "maroon",
+    "icon": "sentiment_very_satisfied",
+    "title": "Sweet Potato and Carrot Soup",
+    "message": "An old family recipe for a simple, healthy, and absolutely delicious soup on Kev's Vegan Blog.",
+    "allowSkip": true,
+    "skipText": "No thanks! Take me Kev's Vegan Blog."
+  }
+}

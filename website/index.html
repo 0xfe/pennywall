@@ -6,12 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Barlow"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Nunito"
     />
 
     <link rel="stylesheet" href="index.css" />
@@ -28,20 +23,26 @@
         <img src="assets/logo.png" class="logo"/>
       </div>
       <div class="main">
-        <p style="font-size: 16">
-        Pennywall is a micro paywall / donation-wall / tip-jar for sharing your content on social networks. You can
+        <div style="font-size: 16">
+        Pennywall is a themeable micro paywall / donation-wall / tip-jar for sharing your content on social networks. You can
         generate as many pennywalls as you like, one for each link you want to share.
-        </p>
-        <div style="text-align: center">
-          <img class="screenshot" src="assets/pennywall-screenshot.png" width=360/>
         </div>
-        <p class="examples">
-            [ <a href="http://give.pennywall.io/kevsveganblog">See demo</a> ]
-            [ <a href="http://give.pennywall.io/kevsmaroonblog">Another demo</a> ]
-          </p>
-        <p style="font-size:16">Users can choose to tip you with a
-        tiny payment, or simply skip past the wall to the target link.
-        </p>
+
+        <div class="screenshots">
+          <div style="text-align: center">
+            <a href="https://give.pennywall.io/v1cbiwm" target="_blank">
+              <img class="screenshot" src="assets/sushi-screenshot.png" width=360/>
+            </a>
+          </div>
+          <!--
+          <div style="text-align: center">
+            <img class="screenshot" src="assets/blueeggs-screenshot.png" width=360/>
+          </div>
+          <div style="text-align: center">
+            <img class="screenshot" src="assets/pennywall-screenshot.png" width=360/>
+          </div>
+          -->
+        </div>
 
         <div class="action">
           <div class="button">
@@ -49,28 +50,15 @@
           </div>
         </div>
 
-<code><strong>$ cat pennywall.json</strong>
-<span style="color:rgb(165, 72, 5)">{
-  "apiKey": "YOUR_API_KEY",
-  "destination": {
-     "url": "https://kevsveganblog.com/post_how_to_eat_bananas"
-  },
-  "theme": {
-    "name": "heart",
-    "title": "Kev's Vegan Blog"
-  }
-}</span>
+        <div class="examples">
+            [ <a href="https://how.quid.works/selling-with-quid/setup-a-pennywall-with-quid" target="_blank">Get Started</a> ]
+            [ <a href="https://github.com/0xfe/pennywall" target="_blank">Developers</a> ]
+            [ <a href="https://github.com/0xfe/pennywall/blob/master/pennywall.json" target="_blank">Configuration</a> ]
+        </div>
 
-<strong>$ cat pennywall.json | bash &lt;(curl -s https://pennywall.io/build)</strong>
-{"success": true, "path": "<a href='https://give.pennywall.io/v1myg6q'>https://give.pennywall.io/v1myg6q</a>"}
-</code>
-        <p class="description">
-        A themeable donation-wall generator for sharing social content.
-        </p>
+        <code>$ cat <a href="https://github.com/0xfe/pennywall/blob/master/pennywall.json" target="_blank">pennywall.json</a> | bash &lt;(curl -s https://pennywall.io/build)</code>
 
-        <p>
-        Fork it on <a href="https://github.com/0xfe/pennywall">GitHub</a>.
-        </p>
+        <a href="https://github.com/0xfe/pennywall"><img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-red@2x.png" alt="Fork me on GitHub"></a>
       </div>
   </body>
 </html>

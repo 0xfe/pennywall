@@ -5,11 +5,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow';
+  font-family: 'Nunito';
 }
 
 div.shell {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,16 +32,6 @@ div.main {
   max-width: 600px;
 }
 
-div.main > p.description {
-  font-size: 18px;
-  text-align: center;
-}
-
-div.main > p.examples {
-  font-size: 18px;
-  text-align: center;
-}
-
 .action {
   padding: 10px;
 }
@@ -51,7 +40,6 @@ div.main > p.examples {
   background: rgb(49, 69, 121);
   border-radius: 5px;
   padding: 15px;
-  padding-bottom: 18px;
   color: white;
 }
 
@@ -79,5 +67,22 @@ img.screenshot {
   border-radius: 4px;
   box-shadow: 2px 2px 5px 2px #888888;
   padding: 0;
-  margin: 0;
+  margin: 5;
+}
+
+div.screenshots {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+
+div.examples {
+  font-size: 16px;
+  padding: 10px;
+}
+
+div.fork {
+  font-size: 16px;
+  padding: 10px;
 }
