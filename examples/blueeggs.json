@@ -1,0 +1,36 @@
+{
+  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
+  "merchant": {
+    "name": "Kev's Vegan Blog"
+  },
+  "product": {
+    "id": "10001",
+    "name": "Online donation",
+    "description": "Donation to Kev's Vegan Blog",
+    "url": "https://kevsveganblog.com/donate",
+    "price": 1.0,
+    "currency": "CAD"
+  },
+  "destination": {
+    "url": "https://kevsveganblog.com",
+    "method": "GET",
+    "sendReceipt": false
+  },
+  "button": {
+    "slider": true,
+    "palette": "blue",
+    "min": 0,
+    "max": 2,
+    "text": "ADD A TIP",
+    "paidText": "THANK YOU!"
+  },
+  "theme": {
+    "name": "vegout",
+    "palette": "blue",
+    "icon": "favorite",
+    "title": "Blue Eggs and Ham",
+    "message": "Recipe for Mo's famous Blue Eggs and Ham. Pay what you want, and dig in.",
+    "allowSkip": true,
+    "skipText": "No thanks! Take me Mo's Magnificent Meals."
+  }
+}

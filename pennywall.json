@@ -21,16 +21,16 @@
     "palette": "blue",
     "min": 0,
     "max": 2,
-    "text": "DONATE",
-    "paidText": "THANKS FOR DONATING!"
+    "text": "ADD A TIP",
+    "paidText": "THANK YOU!"
   },
   "theme": {
     "name": "vegout",
-    "palette": "maroon",
+    "palette": "blue",
     "icon": "favorite",
-    "title": "Donate to Kev's Vegan Blog",
-    "message": "This site is supported with your donations. Please consider adding a tip.",
+    "title": "Blue Eggs and Ham",
+    "message": "Recipe for Mo's famous Blue Eggs and Ham. Pay what you want, and dig in.",
     "allowSkip": true,
-    "skipText": "No thanks! Take me Kev's Vegan Blog."
+    "skipText": "No thanks! Take me Mo's Magnificent Meals."
   }
 }

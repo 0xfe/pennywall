@@ -1,0 +1,36 @@
+{
+  "apiKey": "kt-JH7P34VV62F3LUH3QC01N99LIIKIA8V7",
+  "merchant": {
+    "name": "Kev's Vegan Blog"
+  },
+  "product": {
+    "id": "10001",
+    "name": "Online donation",
+    "description": "Donation to Kev's Vegan Blog",
+    "url": "https://kevsveganblog.com/donate",
+    "price": 1.0,
+    "currency": "CAD"
+  },
+  "destination": {
+    "url": "https://kevsveganblog.com",
+    "method": "GET",
+    "sendReceipt": false
+  },
+  "button": {
+    "slider": true,
+    "palette": "blue",
+    "min": 0,
+    "max": 2,
+    "text": "DONATE",
+    "paidText": "THANKS FOR DONATING!"
+  },
+  "theme": {
+    "name": "vegout",
+    "palette": "metal",
+    "icon": "favorite",
+    "title": "Daily Sushi Podcast",
+    "message": "The Daily Sushi Podcast is supported with your donations. Please consider adding a tip.",
+    "allowSkip": true,
+    "skipText": "No thanks! Take me the Daily Sushi Podcast."
+  }
+}
