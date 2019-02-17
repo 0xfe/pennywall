@@ -122,10 +122,17 @@ scp -r build/* you@yourhost:/your/www/path
 
 Current themes:
 
-* `heart` with palettes `maroon`, `metal`
+* `heart` with palettes `maroon`, `metal`, `blue`
+* `vegout` with palettes `maroon`, `metal`, `blue`
 
-To create a new theme, add a new directory under `themes/NAME` and include the files `index.hbs` (handlebars HTML), `index.js`, and `index.scss`. For custom palettes, you and have multiple `index-PALETE.scss` files.
+To create a new theme:
 
+* Add a new directory under `themes/NAME`
+* Include files `index.hbs` (handlebars HTML), `index.js`, and `index.scss`
+   * For custom palettes, you and have multiple `index-PALETE.scss` files.
+   * Additional assets (images, videos, fonts) must be under `themes/NAME/assets`
+* Finally, add your theme configuration (name, palettes, etc.) to `src/themes.js`
+* If you want your theme to be shareable (on https://give.pennywall.io), send a PR :-)
 
 ## Hacking on this repo
 
