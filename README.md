@@ -41,7 +41,7 @@ You can also send your configuration file directly with:
 $ cat pennywall.json | bash <(curl -s https://pennywall.io/build)
 ```
 
-Make sure to have your [QUID API key](https://how.quid.works/developer/quid-quickstart) handy to accept payments. (The key must allow access from origin `https://give.pennywall.io`.)
+Make sure to have your [QUID API key](https://how.quid.works/selling-with-quid/setup-a-pennywall-with-quid) handy to accept payments. (The key must allow access from origin `https://give.pennywall.io`.)
 
 ### Self hosted
 
@@ -51,7 +51,7 @@ Install pennywall:
 npm i pennywall
 ```
 
-Edit your configuration file. You need a [QUID API key](https://how.quid.works/developer/quid-quickstart) API key to accept payments.
+Edit your configuration file. You need a [QUID API key](https://how.quid.works/selling-with-quid/setup-a-pennywall-with-quid) API key to accept payments.
 
 ```
 vi pennywall.json
