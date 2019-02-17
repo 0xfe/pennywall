@@ -125,7 +125,7 @@ Current themes:
 * `heart` with palettes `maroon`, `metal`, `blue`
 * `vegout` with palettes `maroon`, `metal`, `blue`
 
-To create a new theme:
+### Creating a new theme
 
 * Add a new directory under `themes/NAME`
 * Include files `index.hbs` (handlebars HTML), `index.js`, and `index.scss`
