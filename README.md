@@ -1,8 +1,9 @@
 <p align="center">
   <img src="https://i.imgur.com/E9LyKea.png" width=450 />
  <br/>
- [ <a href="http://give.pennywall.io/kevsveganblog">See demo</a> ]
- [ <a href="http://give.pennywall.io/kevsmaroonblog">Another demo</a> ]
+  <img src="https://pennywall.io/assets/sushi-screenshot.png" width=350/>
+ <br/>
+ [ <a href="https://give.pennywall.io/v1cbiwm/index.html">See demo</a> ]
 </p>
 
 ## What is Pennywall?
